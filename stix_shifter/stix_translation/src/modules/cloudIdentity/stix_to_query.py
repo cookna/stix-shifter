@@ -26,3 +26,4 @@ class StixToQuery(BaseQueryTranslator):
         query_string = query_constructor.translate_pattern(
             antlr_parsing_object, data_model_mapper, options)
         return query_string
+
