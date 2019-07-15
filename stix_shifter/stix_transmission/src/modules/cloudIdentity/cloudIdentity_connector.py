@@ -3,6 +3,8 @@ from .apiclient import APIClient
 from ..base.base_status_connector import Status
 from json import loads
 from enum import Enum
+#from CloudIdentity_Token import init
+
 
 
 class DatasourceStatus(Enum):
@@ -17,14 +19,6 @@ class DatasourceStatus(Enum):
 
 class Connector(BaseConnector):
     def __init__(self, connection, configuration):
-        self.api_client = APIClient(connection, configuration)
-        self.is_async = True
-
-        self.results_connector = self
-        self.query_connector = self
-        self.ping_connector = self
-        self.delete_connector = self
-        self.status_connector = self
 
     def ping(self):
         try:
