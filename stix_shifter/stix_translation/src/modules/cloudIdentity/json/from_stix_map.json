@@ -1,53 +1,33 @@
 {
   "ipv4-addr": {
     "fields": {
-      "value": ["SourceIpV4", "DestinationIpV4"]
-    }
-  },
-  "ipv6-addr": {
-    "fields": {
-      "value": ["SourceIpV6", "DestinationIpV6"]
+      "value":["origin"]
     }
   },
   "url": {
     "fields": {
-      "value": ["Url"]
-    }
-  },
-  "mac-addr": {
-    "fields": {
-      "value": ["SourceMac", "DestinationMac"]
-    }
-  },
-  "file": {
-    "fields": {
-      "name": ["FileName"]
-    }
-  },
-  "network-traffic": {
-    "fields": {
-      "src_port": ["SourcePort"],
-      "dst_port": ["DestinationPort"],
-      "start": ["StartTime"],
-      "end": ["EndTime"],
-      "protocols[*]": ["NetworkProtocol"],
-      "src_ref.value": ["SourceIpV4", "SourceIpV6"],
-      "dst_ref.value": ["DestinationIpV4", "DestinationIpV6"]
+      "value": ["tenantname"]
     }
   },
   "user-account": {
     "fields": {
-      "user_id": ["UserName"]
+      "user_id": ["id"],
+      "account_login": ["userName"],
+      "account_created": ["created"],
+      "password_last_changed": ["pwdChangedTime"],
+      "display_name": ["formatted"]
+
     }
   },
-  "artifact": {
+  "email-addr": {
     "fields": {
-      "payload_bin": ["Payload"]
+      "value": ["emails.value"],
+      "display_name": ["formatted"]
     }
   },
   "domain-name": {
     "fields": {
-      "value": ["DomainName"]
+      "value": ["realm"]
     }
   }
 }
