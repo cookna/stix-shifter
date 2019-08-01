@@ -37,6 +37,23 @@ def getUsers(token):
     print(json_data)
 #Last time user name logged in
 
+def getUser(token, id=None):
+    url = util.getUri()+"/v2.0/Users/" + id
+
+
+    headers = { "Accept": "application/json, text/plain, */*","authorization": "Bearer "+token}
+    try:
+        res = requests.post(url, headers=headers)
+
+        jsonData = res.json()
+        return jsonData
+    except Exception as e:
+        print("failed")
+        print(e)
+
+    #print(json.loads(resp.text))
+        
+
 def postReports(token, reportName, FROM, TO, SIZE, SORT_BY, SORT_ORDER, SEARCH_AFTER = None):
     url = util.getUri() + f"/v1.0/reports/{reportName}"
 
@@ -55,7 +72,7 @@ def postReports(token, reportName, FROM, TO, SIZE, SORT_BY, SORT_ORDER, SEARCH_A
         res = requests.post(url, json=body, headers=headers)
 
         jsonData = res.json()
-        print(jsonData)
+        return jsonData
     except Exception as e:
         print("failed")
         print(e)
@@ -75,7 +92,7 @@ def getAdminActivity(token, FROM, TO, SIZE, SORT_BY, SORT_ORDER):
         res = requests.post(url, data=body, headers=headers)
 
         jsonData = res.json()
-        print(jsonData)
+        return jsonData
     except Exception as e:
         print("failed")
         print(e)
@@ -93,6 +110,7 @@ def getAuthenticatedTotalLogins(token, FROM, TO):
 
         jsonData = res.json()
         print(jsonData)
+        return jsonData
     except Exception as e:
         print("failed")
         print(e)
@@ -113,6 +131,7 @@ def getAuthenticationTrail(token, FROM, TO, SIZE, SORT_BY, SORT_ORDER):
 
         jsonData = res.json()
         print(jsonData)
+        return jsonData
     except Exception as e:
         print("failed")
         print(e)
@@ -127,6 +146,7 @@ def getAuthFactors(token, params=None):
         res = requests.get(url, params=params, headers=headers)
         jsonData = res.json()
         print(jsonData)
+        return jsonData
     except Exception as e:
         print("failed")
         print(e)
@@ -140,6 +160,7 @@ def getAuthMethods(token, methodType):
         res = requests.get(url, headers=headers)
         jsonData = res.json()
         print(jsonData)
+        return jsonData
     except Exception as e:
         print("failed")
         print(e)
@@ -153,6 +174,7 @@ def getAuthenticators(token, params=None):
         res = requests.get(url, params=params, headers=headers)
         jsonData = res.json()
         print(jsonData)
+        return jsonData
     except Exception as e:
         print("failed")
         print(e)
