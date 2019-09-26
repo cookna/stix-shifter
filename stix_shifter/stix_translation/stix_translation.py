@@ -77,11 +77,8 @@ class StixTranslation:
                 if current_recursion_limit < recursion_limit:
                     print("Changing Python recursion limit from {} to {}".format(current_recursion_limit, recursion_limit))
                     sys.setrecursionlimit(recursion_limit)
-                if 'result_limit' not in options:
-                    options['result_limit'] = DEFAULT_LIMIT
-                if 'timerange' not in options:
-                    options['timerange'] = DEFAULT_TIMERANGE
-
+                options['result_limit'] = options.get('resultSizeLimit', DEFAULT_LIMIT)
+                options['timerange'] = options.get('timeRange', DEFAULT_TIMERANGE)
                 if translate_type == QUERY:
                     if 'validate_pattern' in options and options['validate_pattern'] == "true":
                         self._validate_pattern(data)
@@ -89,7 +86,6 @@ class StixTranslation:
                         data_model = importlib.import_module("stix_shifter.stix_translation.src.modules." + module + ".data_mapping")
                         data_model_mapper = data_model.DataMapper(options)
                     except Exception as ex:
-                        print("Data model mapper not found for {} so attempting to use CAR or CIM".format(module))
                         data_model_mapper = self._cim_or_car_data_mapper(module, options)
                     antlr_parsing = generate_query(data)
                     if data_model_mapper:
