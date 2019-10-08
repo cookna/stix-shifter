@@ -10,6 +10,7 @@
     "key": "x__custom_property.magnitude",
     "cybox": false
   },
+  
   "SourceIpV4": [
     {
       "key": "ipv4-addr.value",
@@ -71,6 +72,8 @@
       "cybox": false
     }
   ],
+
+  
   "Url": {
     "key": "url.value"
   },
@@ -111,5 +114,87 @@
         "key": "process.id"
       }
     ]
+  },
+
+  "User-Report": {
+    "event_type": [
+      {
+        "object": "ur",
+        "key": "user-report.event-type"
+      }
+    ],
+    "data": {
+      "result": [
+        {
+          "object": "ur",
+          "key": "user-report.result"
+        }
+      ],
+      "targetid_username": [
+        {
+          "object": "ur",
+          "key": "user-report.targetid_username"
+        }
+      ],
+      "origin": [
+        {
+          "object": "ur",
+          "key": "user-report.origin"
+        }
+      ],
+      "performedby_username": [
+        {
+          "object": "ur",
+          "key": "user-report.performedby_username"
+        }
+      ],
+      "action": [
+        {
+          "object": "ur",
+          "key": "user-report.action"
+        }
+      ]
+    },
+      "cybox":false
+
+  },
+  "user-account": {
+      "id": [
+        {
+          "object": "ua",
+          "key": "user-account.user_id"
+        }
+      ],
+      "userName": [
+        {
+          "object": "ua",
+          "key": "user-account.account_login"
+        }
+      ],
+      "displayName": [
+        {
+          "object": "ua",
+          "key": "user-account.display_name"
+        }
+      ],
+      "created": [
+        {
+          "object": "ua",
+          "key": "user-account.account_first_login"
+        }
+      ],
+      "respourceType": [
+        {
+          "object": "ua",
+          "key": "user-account.account_type"
+        }
+      ] 
   }
+<<<<<<< HEAD
 }
+=======
+  
+
+}
+
+>>>>>>> b38caeaa332ccc58291124111e7a718c5ff7b986

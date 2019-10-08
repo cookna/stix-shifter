@@ -2,7 +2,9 @@ from ..base.base_connector import BaseConnector
 from .api_client import APIClient
 from ..base.base_status_connector import Status
 from json import loads
+import pprint
 from enum import Enum
+from . import CloudIdentity_Request, CloudIdentity_Token
 #from CloudIdentity_Token import init
 
 
@@ -16,10 +18,9 @@ class DatasourceStatus(Enum):
     CANCELED = 'CANCELED'
     ERROR = 'ERROR'
 
-
 class Connector(BaseConnector):
     def __init__(self, connection, configuration):
-
+        return
     def ping(self):
         try:
             response = self.api_client.ping_data_source()
@@ -29,12 +30,36 @@ class Connector(BaseConnector):
             raise
 
     def create_query_connection(self, query):
+        token = CloudIdentity_Token.getToken()
+        request = query.split(' ')
+        print(request)
+        #response = self.callApi(token, request[3])
+        #print(query.split(' = '))
+
         try:
-            response = self.api_client.create_search(query)
-            return response
+            #response = CloudIdentity_Request.getAdminActivity(token, "now-240h", "now", 10, "time","asc")
+
+            return 
         except Exception as err:
             print('error when creating search: {}'.format(err))
             raise
+
+    def callApi(self, token, call, id=None, FROM=None, TO=None, SIZE=None, SORT_BY=None, SORT_ORDER=None):
+        if(call == "getUser"):
+            return CloudIdentity_Request.getUser(token, id)
+        elif(call == "getUsers"):
+            return CloudIdentity_Request.getUsers(token)
+        elif(call == "getAdminActivity"):
+            return CloudIdentity_Request.getAdminActivity(token, FROM, TO, SIZE, SORT_BY, SORT_ORDER)
+        else:
+            print("Invalid Request")
+            return
+
+    def getParams(self, query):
+        for val in query:
+            if val == "CIFun":
+                 
+            
 
     # Map data source status to connector status
     def __getStatus(self, status):

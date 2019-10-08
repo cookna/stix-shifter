@@ -8,5 +8,5 @@ class CloudIdentityPing(BaseQueryConnector):
         self.api_client = api_client
 
     def ping(self):
-
+        return
     

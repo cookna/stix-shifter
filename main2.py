@@ -12,7 +12,7 @@ from stix_shifter.stix_transmission.src.modules.cloudIdentity import CloudIdenti
 def main2():
 
     token = CloudIdentity_Token.getToken()
-    CloudIdentity_Request.getUsers(token)
+    CloudIdentity_Request.getAuthenticationTrail(token, "now-240h", "now", 10, "time", "asc")
     #print(token)
 
 main2()
